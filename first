@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<script> 
+
+var length=0;
+var length1=0;
+
+$(document).ready(function() {
+  $("input[type=checkbox].sub").on("change",function() {
+  if(this.checked){
+  length++
+    if(length>=3) {
+      $(".sub:not(:checked)").attr("disabled",true);
+    }
+    var a= $(this).attr('id');
+    $('#cl').append("<li id=list" + a + ">" + $(this).val() + "</li>");
+    }
+    else{
+    length--;
+    $(".sub:not(:checked)").attr("disabled",false);
+    $("#list"+ $(this).attr('id')).remove();
+    }
+   
+  });
+});
+
+$(document).ready(function() {
+  $("input[type=checkbox].opt").on("change",function() {
+  if(this.checked){
+  length1++
+    if(length1>=2) {
+      $(".opt:not(:checked)").attr("disabled",true);
+    }
+    var a= $(this).attr('id');
+    $('#cl').append("<li id=list" + a + ">" + $(this).val() + "</li>");
+    }
+    
+   else {
+    length1--;
+    $(".opt:not(:checked)").attr("disabled",false);
+    $("#list"+ $(this).attr('id')).remove();
+    }
+    
+  });
+});
+
+ </script>
+
+</head>
+<body>
+
+  <b> compulsory subjects: Maximum 3 subjects</b>
+<br/>
+<br/>
+<ul>
+<li>
+<input type="checkbox" class="sub" id="sub1" value="maths" /> maths
+</li>
+<li><input type="checkbox" class="sub" id="sub2" value="electronics" /> electronics
+</li>
+<li><input type="checkbox" class="sub" id="sub3" value="physics" /> physics
+</li>
+<li><input type="checkbox" class="sub" id="sub4" value="biology" /> biology
+</li>
+<li><input type="checkbox" class="sub" id="sub5" value="chemistry" /> chemistry
+</li>
+</ul>
+
+
+<b> optional subjects: Maximum 2 subjects</b>
+<br/>
+<ul>
+<li><input type="checkbox" class="opt" id="opt1" value="automobile" /> autmobile 
+</li>
+<li><input type="checkbox" class="opt" id="opt2" value="aircraft" /> aircraft
+</li>
+<li><input type="checkbox" class="opt" id="opt3" value="computers" /> computers 
+</li>
+<li><input type="checkbox" class="opt" id="opt4" value="environmental" /> environmental
+</li>
+</ul>
+<br/>
+
+<b> chosen subjects </b>
+    <ul id="cl">
+    </ul>
+
+
+</body>
+</html>
